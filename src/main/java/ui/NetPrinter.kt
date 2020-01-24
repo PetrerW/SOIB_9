@@ -3,10 +3,20 @@ package ui
 import model.FrequencyNet
 
 class NetPrinter {
-    fun printFrequencies(net: FrequencyNet){
-        println("Collisions: " + net.checkCollisions())
-        for(freq in 0 until net.frequencies.size){
-                println("[" + freq + "]: " + net.frequencies[freq])
+    companion object{
+        fun printFrequencies(net: FrequencyNet){
+            println("Collisions: " + net.checkCollisions())
+            for(freq in net.frequencies.keys.sorted()){
+                print("[" + freq + "]: " + net.frequencies.getValue(freq))
+                if(freq == net.signalGroup.fi)
+                    println(" <-- fi")
+                else if (freq == net.signalGroup.fj)
+                    println(" <-- fj ")
+                else if (freq == net.signalGroup.fk)
+                    println(" <-- fk ")
+                else
+                    println()
+            }
         }
     }
 }
