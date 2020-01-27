@@ -26,7 +26,7 @@ class FrequencyNet(
 
         this.signalGroup = s
 
-        var products = s.getProducts()
+        var products = s.findProducts()
         for(p in products){
             if(this.frequencies.containsKey(p)){
                 frequencies.replace(p, frequencies.getValue(p) + 1)

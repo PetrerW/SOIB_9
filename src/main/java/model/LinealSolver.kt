@@ -2,7 +2,7 @@ package model
 
 class LinealSolver {
     companion object{
-        fun solve(maxIterations: Int): ArrayList<FrequencyNet>{
+        fun solve(maxIterations: Int, maxWindowSize: Int): ArrayList<FrequencyNet>{
             var frequencyNets = ArrayList<FrequencyNet>()
             var count = 0
 
@@ -20,6 +20,7 @@ class LinealSolver {
             var fk: Int
 
             while(count < maxIterations){
+                //TODO Modify the algorithm
                 fi = allSignals[signalIndex].fi
                 fj = allSignals[signalIndex].fj
                 fk = allSignals[signalIndex].fk
