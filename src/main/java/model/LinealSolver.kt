@@ -2,12 +2,12 @@ package model
 
 class LinealSolver {
     companion object{
-        fun solve(howManyFreqs: Int): ArrayList<FrequencyNet>{
+        fun solve(maxIterations: Int): ArrayList<FrequencyNet>{
             var frequencyNets = ArrayList<FrequencyNet>()
             var count = 0
 
             //SignalGroups with non-repeated frequencies
-            val allSignals = FreqGen.genFreqs(howManyFreqs*100)
+            val allSignals = FreqGen.genFreqs(maxIterations)
             //Iterator over allSignals
             var signalIndex = 0
 
@@ -19,7 +19,7 @@ class LinealSolver {
             var fj: Int
             var fk: Int
 
-            while(count < howManyFreqs){
+            while(count < maxIterations){
                 fi = allSignals[signalIndex].fi
                 fj = allSignals[signalIndex].fj
                 fk = allSignals[signalIndex].fk

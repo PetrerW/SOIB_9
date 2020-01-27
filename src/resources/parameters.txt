@@ -1,0 +1,2 @@
+Input frequencies=3
+Maximum iterations number=4
