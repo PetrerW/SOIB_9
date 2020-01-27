@@ -8,17 +8,15 @@ import java.lang.Math.floor
 class FreqGen {
     companion object {
 
-        fun genGroupsOf3Freqs(howManyFreqs: Int): ArrayList<SignalGroup>{
+        // Generates all not-repeated combinations of
+        fun genGroupsOf3Freqs(inputFreqsNumber: Int, oldInputFreqs: ArrayList<Int>): ArrayList<SignalGroup>{
 
-            var groups = ArrayList<SignalGroup>(howManyFreqs)
+            var groups = ArrayList<SignalGroup>(inputFreqsNumber)
 
-            for(fi in 1..howManyFreqs){
-                for(fj in fi+1..(howManyFreqs)){
-                    for(fk in fj+1..howManyFreqs){
-                        //TODO Check if correct
-                        val s = SignalGroup(fi, fj, fk)
-                        groups.add(s)
-                    }
+            for(fi in 1 until inputFreqsNumber-2){
+                val fj = fi + 1
+                for(fk in 1 until inputFreqsNumber){
+                    groups.add(SignalGroup(fi, fj, fk))
                 }
             }
 

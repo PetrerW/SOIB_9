@@ -1,3 +1,0 @@
-Input_frequencies=3
-Maximum_iterations_number=4
-Maximal_window_size=5

@@ -21,7 +21,7 @@ class UserInterface {
         }
 
         fun printWithSlotsOccupance(maxIterations: Int){
-            val frequencyNet = LinealSolver.solve(maxIterations)
+            val frequencyNet = LinealSolver.solve(maxIterations, )
             var setCount = 1
             for(net in frequencyNet){
                 println("Set number " + setCount + ": ")
