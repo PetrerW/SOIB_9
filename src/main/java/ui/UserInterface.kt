@@ -6,7 +6,7 @@ class UserInterface {
     companion object{
         fun run(){
 
-            val filename = "src/main/resources/parameters.txt";
+            val filename = "src/main/resources/parameters.txt"
             val inputParams =  InputFileReader.readParametersFromFile(filename)
             val inputFrequenciesNumber = inputParams["Input_frequencies_number"] ?: error("Error reading Input_frequencies_number")
             //Maximal number of iterations in the algorithm
@@ -18,7 +18,7 @@ class UserInterface {
             if(inputFrequenciesNumber != null && maxIterations != null){
                 val frequencyNet = LinealSolver.solve(maxUpgradesNumber, maxWindowSize, inputFrequenciesNumber, maxIterations)
                 NetPrinter.printInputFrequency(frequencyNet)
-                NetPrinter.printFrequenciesWithSlots(frequencyNet)
+//                NetPrinter.printFrequenciesWithSlots(frequencyNet)
             }
             else
                 println("Invalid input data: Input_frequencies_number = " + inputFrequenciesNumber +
@@ -26,31 +26,5 @@ class UserInterface {
                         "\nMax_window_size = " + maxWindowSize +
                         "\nMax_upgrades_number = " + maxUpgradesNumber)
         }
-
-//        fun printWithSlotsOccupance(maxIterations: Int){
-//            val frequencyNet = LinealSolver.solve(maxIterations, )
-//            var setCount = 1
-//            for(net in frequencyNet){
-//                println("Set number " + setCount + ": ")
-//                NetPrinter.printFrequenciesWithSlots(net)
-//                println()
-//                setCount++
-//            }
-//        }
-
-//        fun printOnlyFrequencies(maxIterations: Int){
-//            val frequencyNet = LinealSolver.solve(maxIterations)
-//            var setCount = 1
-//            for(net in frequencyNet){
-//                print("Set number " + setCount + ": ")
-//                NetPrinter.printOnlyFreqiencies(net)
-//                setCount++
-//            }
-//        }
-
-//        fun printInputFrequencies(maxUpgrades: Int, maxWindowSize: Int, InputFreqsCount: Int, maxIterations: Int){
-//            val frequencyNet = LinealSolver.solve(maxUpgrades, maxWindowSize, InputFreqsCount, maxIterations)
-//            NetPrinter.printInputFrequency(frequencyNet)
-//        }
     }
 }

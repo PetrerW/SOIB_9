@@ -1,5 +1,3 @@
-import model.LinealSolver
-import ui.NetPrinter
 import ui.UserInterface
 
 object Application {

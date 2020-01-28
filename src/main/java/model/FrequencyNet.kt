@@ -1,7 +1,5 @@
 package model
 
-import sun.misc.Signal
-
 class FrequencyNet(
         //First Int - number of frequency (carrier)
         //Second Int -
@@ -16,22 +14,28 @@ class FrequencyNet(
 
 ){
     fun addSignalGroup(s: SignalGroup){
-        if(frequencies.containsKey(s.fi))
-//            frequencies.replace(s.fi, frequencies.getValue(s.fi) + 1)
+        if(frequencies.containsKey(s.fi)){
+            //            frequencies.replace(s.fi, frequencies.getValue(s.fi) + 1)
+            inputFrequencies.add(s.fi)
+        }
         else{
             frequencies[s.fi] = 1
             inputFrequencies.add(s.fi)
         }
 
-        if(frequencies.containsKey(s.fj))
-//            frequencies.replace(s.fj, frequencies.getValue(s.fj) + 1)
+        if(frequencies.containsKey(s.fj)){
+            //            frequencies.replace(s.fj, frequencies.getValue(s.fj) + 1)
+            inputFrequencies.add(s.fj)
+        }
         else{
             frequencies[s.fj] = 1
             inputFrequencies.add(s.fj)
         }
 
-        if(frequencies.containsKey(s.fk))
-//            frequencies.replace(s.fk, frequencies.getValue(s.fk) + 1)
+        if(frequencies.containsKey(s.fk)){
+            //            frequencies.replace(s.fk, frequencies.getValue(s.fk) + 1)
+            inputFrequencies.add(s.fk)
+        }
         else{
             frequencies[s.fk] = 1
             inputFrequencies.add(s.fk)
@@ -63,10 +67,6 @@ class FrequencyNet(
         for(f in this.inputFrequencies){
             if (frequencies.getValue(f) > 1){
                 collisions.add(f)
-//                if(f !in inputFrequencies){
-//                    collisions.add(f)
-//                }
-//                if(f != signalGroup.fi && f != signalGroup.fj && f != signalGroup.fk)
             }
         }
         return collisions
