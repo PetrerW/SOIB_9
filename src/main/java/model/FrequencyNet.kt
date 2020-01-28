@@ -17,23 +17,23 @@ class FrequencyNet(
 ){
     fun addSignalGroup(s: SignalGroup){
         if(frequencies.containsKey(s.fi))
-            frequencies.replace(s.fi, frequencies.getValue(s.fi) + 1)
+//            frequencies.replace(s.fi, frequencies.getValue(s.fi) + 1)
         else{
-            frequencies.put(s.fi, 1)
+            frequencies[s.fi] = 1
             inputFrequencies.add(s.fi)
         }
 
-
         if(frequencies.containsKey(s.fj))
-            frequencies.replace(s.fj, frequencies.getValue(s.fj) + 1)
+//            frequencies.replace(s.fj, frequencies.getValue(s.fj) + 1)
         else{
-            frequencies.put(s.fj, 1)
+            frequencies[s.fj] = 1
             inputFrequencies.add(s.fj)
         }
+
         if(frequencies.containsKey(s.fk))
-            frequencies.replace(s.fk, frequencies.getValue(s.fk) + 1)
+//            frequencies.replace(s.fk, frequencies.getValue(s.fk) + 1)
         else{
-            frequencies.put(s.fk, 1)
+            frequencies[s.fk] = 1
             inputFrequencies.add(s.fk)
         }
 
@@ -45,13 +45,13 @@ class FrequencyNet(
                 frequencies.replace(p, frequencies.getValue(p) + 1)
             }
             else{
-                frequencies.put(p, 1)
+                frequencies[p] = 1
             }
         }
     }
 
     fun addSignalGroups(signalgroups: ArrayList<SignalGroup>){
-        this.signalGroups = signalgroups
+//        this.signalGroups = signalgroups
         for(s in signalgroups){
             this.addSignalGroup(s)
         }
@@ -60,11 +60,12 @@ class FrequencyNet(
     // On which positions there are any collisions?
     fun findCollisions(): ArrayList<Int>{
         var collisions = ArrayList<Int>(0)
-        for(f in this.frequencies.keys){
+        for(f in this.inputFrequencies){
             if (frequencies.getValue(f) > 1){
-                if(f !in inputFrequencies){
-                    collisions.add(f)
-                }
+                collisions.add(f)
+//                if(f !in inputFrequencies){
+//                    collisions.add(f)
+//                }
 //                if(f != signalGroup.fi && f != signalGroup.fj && f != signalGroup.fk)
             }
         }
@@ -78,9 +79,12 @@ class FrequencyNet(
     }
 
     fun findLongestWindow(): Int{
-        val max = frequencies.maxBy { it.key }!!
-        val min = frequencies.minBy { it.key }!!
-        return max.key - min.key
+        return if(inputFrequencies.isNotEmpty()){
+            val max = inputFrequencies.maxBy { it }!!
+            val min = inputFrequencies.minBy { it }!!
+            max - min
+        }else
+            0
     }
 
     constructor(signalgroups: ArrayList<SignalGroup>): this(mutableMapOf(), arrayListOf(),
