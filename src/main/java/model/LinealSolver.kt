@@ -2,7 +2,10 @@ package model
 
 class LinealSolver {
     companion object{
-        fun solve(maxUpgrades: Int, maxWindowSize: Int, InputFreqsCount: Int, maxIterations: Int): FrequencyNet{
+        // return Triple(bestFreqNet, upgrades, iterations)
+        fun solve(maxUpgrades: Int, maxWindowSize: Int, InputFreqsCount: Int, maxIterations: Int):
+                Triple<FrequencyNet, Int, Int>{
+
             //Starting population
             var startInputFrequencies = ArrayList<Int>(InputFreqsCount)
             for(i in 1..InputFreqsCount){
@@ -51,7 +54,7 @@ class LinealSolver {
                     println()
             }
 
-            return bestFreqNet
+            return Triple(bestFreqNet, upgrades, iterations)
         }
 
         fun isBetter(new: FrequencyNet, old: FrequencyNet): Boolean{

@@ -1,0 +1,4 @@
+collisions=false
+iterations=50722
+upgrades=50
+solution=0,2,7,13,16,17

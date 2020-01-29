@@ -7,6 +7,4 @@ object Application {
     fun main(args: Array<String>) {
         UserInterface.run()
     }
-
-
 }

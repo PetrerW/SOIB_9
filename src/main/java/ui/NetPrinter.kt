@@ -1,6 +1,7 @@
 package ui
 
 import model.FrequencyNet
+import java.io.File
 
 class NetPrinter {
     companion object {
@@ -40,6 +41,25 @@ class NetPrinter {
             println("}")
 
             println("Collisions: ${net.hasCollisions}")
+        }
+
+        fun writeSolutionToFile(net: FrequencyNet, upgrades: Int, iterations: Int, fileName: String){
+            File(fileName).delete()
+
+            var minFrequency = net.inputFrequencies.minBy { it }!!
+
+            val file = File(fileName)
+
+            file.writeText("collisions=${net.hasCollisions}\n")
+            file.appendText("iterations=$iterations\n")
+            file.appendText("upgrades=$upgrades\n")
+            file.appendText("solution=")
+
+            val solutionFrequencies = net.inputFrequencies.toTypedArray()
+            for(i in 0..solutionFrequencies.size - 2 ){
+                file.appendText("${solutionFrequencies[i] - minFrequency},")
+            }
+            file.appendText("${solutionFrequencies.last() - minFrequency}\n")
         }
     }
 }

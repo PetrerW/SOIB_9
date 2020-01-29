@@ -1,6 +1,7 @@
 package ui
 
 import model.LinealSolver
+import java.io.File
 
 class UserInterface {
     companion object{
@@ -16,7 +17,9 @@ class UserInterface {
 
 
             if(inputFrequenciesNumber != null && maxIterations != null){
-                val frequencyNet = LinealSolver.solve(maxUpgradesNumber, maxWindowSize, inputFrequenciesNumber, maxIterations)
+                val (frequencyNet, upgrades, iterations) = LinealSolver.solve(maxUpgradesNumber,
+                        maxWindowSize, inputFrequenciesNumber, maxIterations)
+                NetPrinter.writeSolutionToFile(frequencyNet, upgrades, iterations, "src/main/resources/solution.txt")
                 NetPrinter.printInputFrequency(frequencyNet)
 //                NetPrinter.printFrequenciesWithSlots(frequencyNet)
             }

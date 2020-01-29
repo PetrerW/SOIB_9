@@ -1,4 +1,4 @@
-Input_frequencies_number=6
+Input_frequencies_number=7
 Max_iterations_number=4000000
-Max_window_size=25
-Max_upgrades_number=50
+Max_window_size=30
+Max_upgrades_number=5
