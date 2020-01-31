@@ -6,8 +6,7 @@ import java.io.File
 class UserInterface {
     companion object{
         fun run(){
-
-            val filename = "src/main/resources/parameters.txt"
+            val filename = "E:/Piotr/Programowanie/Kotlin/SOIB_9/src/main/resources/parameters.txt"
             val inputParams =  InputFileReader.readParametersFromFile(filename)
             val inputFrequenciesNumber = inputParams["Input_frequencies_number"] ?: error("Error reading Input_frequencies_number")
             //Maximal number of iterations in the algorithm
@@ -19,7 +18,8 @@ class UserInterface {
             if(inputFrequenciesNumber != null && maxIterations != null){
                 val (frequencyNet, upgrades, iterations) = LinealSolver.solve(maxUpgradesNumber,
                         maxWindowSize, inputFrequenciesNumber, maxIterations)
-                NetPrinter.writeSolutionToFile(frequencyNet, upgrades, iterations, "src/main/resources/solution.txt")
+                NetPrinter.writeSolutionToFile(frequencyNet, upgrades, iterations,
+                        "E:/Piotr/Programowanie/Kotlin/SOIB_9/src/main/resources/solution.txt")
                 NetPrinter.printInputFrequency(frequencyNet)
 //                NetPrinter.printFrequenciesWithSlots(frequencyNet)
             }
